@@ -1,12 +1,23 @@
 
-const CACHE_NAME = 'cache-v8';
+const CACHE_NAME = 'cache-v17';
 const urlsToCache = [
-	// '/',
-	// '/index.html',
-	'offline.html',
-	// '/style.css',
-	// '/main.js',
-	// '/favicon.ico'
+	// STATIC PAGES
+	'/',
+	'/index.html',
+	'/offline.html',
+
+	// JS FILES
+	'/js/main.js',
+	'/js/jquery-3.6.0.slim.min.js',
+
+	// STYLES
+	'/styles/style.css',
+
+	// IMAGES
+	'/favicon.ico',
+	'/images/Logo-192x192.png',
+	'/images/checkmark.png',
+	'/images/xmark.png'
 ];
 
 self.addEventListener('install', function(event) {
@@ -23,11 +34,9 @@ self.addEventListener('activate', function(event) {
 	event.waitUntil(
 		caches.keys().then(function(cacheNames) {
 			return Promise.all(
-				cacheNames.filter(function(cacheName) {
-					return cacheName !== CACHE_NAME;
-				}).map(function(cacheName) {
-					return caches.delete(cacheName);
-				})
+				cacheNames
+					.filter(cacheName => cacheName !== CACHE_NAME)
+					.map(cacheName => caches.delete(cacheName))
 			);
 		})
 	);
@@ -44,7 +53,7 @@ self.addEventListener('fetch', function(event) {
 			return fetch(event.request).then(
 				function(response) {
 					// Dont't cache irregular responses
-					if (!response || response.status != 200 || reseponse.type !== 'basic') {
+					if (!response || response.status != 200 || response.type !== 'basic') {
 						return response;
 					}
 
@@ -56,7 +65,7 @@ self.addEventListener('fetch', function(event) {
 							cache.put(event.request, responseToCache);
 						});
 
-					return reseponse;
+					return response;
 				}
 			);
 		})
