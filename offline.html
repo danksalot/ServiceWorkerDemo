@@ -4,10 +4,33 @@
 	<meta charset="utf-8">
 	<title></title>
 	<link href="styles/style.css" rel="stylesheet" />
+	<link href="styles/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-	<div id="test">You are offline!</div>
+	<div class="w-100 bg-info p-3">
+		<h1 class="text-danger">Stuff Mart</h1>
+		<h4>Lots of Stuff!  Lots of Mart!!!</h4>
+	</div>
+	<div class="row mt-5">
+		<div class="col-4">
+			<img class="w-100" src="images/product1.png">
+			<h4 class="mt-3 w-100 text-center"><strong>Product 1</strong></h4>
+		</div>
+		<div class="col-4">
+			<img class="w-100" src="images/product2.png">
+			<h4 class="mt-3 w-100 text-center"><strong>Product 2</strong></h4>
+		</div>
+		<div class="col-4">
+			<img class="w-100" src="images/product3.png">
+			<h4 class="mt-3 w-100 text-center"><strong>Product 3</strong></h4>
+		</div>
+	</div>
+	<div class="text-center mt-5 text-size-large" style="font-size: 150%">
+		<div id="test">It looks like you're offline, so our automated ordering system is not available.</div>
+		<div id="test">Give us a call at <strong>555-555-1212</strong> to place your order over the phone.</div>
+	</div>
 	<script src="js/jquery-3.6.0.slim.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>	
 </body>
 </html>

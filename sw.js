@@ -1,23 +1,28 @@
 
-const CACHE_NAME = 'cache-v17';
+const CACHE_NAME = 'cache-v23';
 const urlsToCache = [
 	// STATIC PAGES
-	'/',
-	'/index.html',
+	// '/',
+	// '/index.html',
 	'/offline.html',
 
 	// JS FILES
 	'/js/main.js',
 	'/js/jquery-3.6.0.slim.min.js',
+	'/js/bootstrap.min.js',
 
 	// STYLES
 	'/styles/style.css',
+	'/styles/bootstrap.min.css',
 
 	// IMAGES
 	'/favicon.ico',
 	'/images/Logo-192x192.png',
 	'/images/checkmark.png',
-	'/images/xmark.png'
+	'/images/xmark.png',
+	'/images/product1.png',
+	'/images/product2.png',
+	'/images/product3.png'
 ];
 
 self.addEventListener('install', function(event) {
@@ -53,7 +58,7 @@ self.addEventListener('fetch', function(event) {
 			return fetch(event.request).then(
 				function(response) {
 					// Dont't cache irregular responses
-					if (!response || response.status != 200 || response.type !== 'basic') {
+					if (!response || response.status != 200 || response.type !== 'basic' || !urlsToCache.includes(event.request)) {
 						return response;
 					}
 
