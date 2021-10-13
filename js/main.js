@@ -38,4 +38,8 @@ function displayNotification() {
 	}
 }
 
-displayNotification();
+$(document).ready(function() {
+    $("#btnShop").click(function(){
+        displayNotification();
+    }); 
+});

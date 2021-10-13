@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'cache-v24';
+const CACHE_NAME = 'cache-v25';
 const urlsToCache = [
 	// STATIC PAGES
 	// '/',
